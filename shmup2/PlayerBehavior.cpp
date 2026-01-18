@@ -12,6 +12,7 @@
 PlayerBehavior::PlayerBehavior(Entity* parent) : AComponent(parent){}
 
 void PlayerBehavior::Update(float dt) {
+	Transformable* transform = parent->GetComponent<Transformable>();
 	Movable* movableC = parent->GetComponent<Movable>();
 	RigidBody* rb = parent->GetComponent<RigidBody>();
 	movableC->setDirection({ 0 , 0 });
@@ -20,6 +21,9 @@ void PlayerBehavior::Update(float dt) {
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)) {
 		movableC->setDirection({ movableC->getDirection().x - 1, movableC->getDirection().y });
+	}
+	if (transform->getPosition().y > 3000) {
+		parent->getScene()->setSwitch(true, 4);
 	}
 }
 

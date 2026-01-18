@@ -23,6 +23,7 @@
 #include "Jump.h"
 #include "Crouch.h"
 #include "EndScene.h"
+#include "LoseScene.h"
 
 int main()
 {
@@ -34,12 +35,13 @@ int main()
     Scene* mainMenu = new MenuScene(&engine);
     Scene* level1 = new Scene(&engine);
     Scene* level2 = new Scene(&engine);
-    Scene* loseMenu = new Scene(&engine);
+    Scene* loseMenu = new LoseScene(&engine);
     Scene* endMenu = new EndScene(&engine);
     engine.AddScene(mainMenu);
     engine.AddScene(level1);
     engine.AddScene(level2);
     engine.AddScene(endMenu);
+    engine.AddScene(loseMenu);
 
 
     /////////////////////////////////////////////////////////////////////NIVEAU 1/////////////////////////////////////////////////////////////////
