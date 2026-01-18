@@ -20,11 +20,6 @@ CapsuleCollider::CapsuleCollider(Entity* parent, b2Vec2 size) : size(size), Coll
 	b2Shape_SetFriction(shapeId, 2.f);
 	b2Shape_SetRestitution(shapeId, 0);
 	b2Body_SetFixedRotation(rb->getBody(), true);
-	/*b2Capsule* capsule = new b2Capsule;
-	capsule->radius = (size.x/scale) / 2;
-	capsule->center2 = { b2Body_GetTransform(rb.getBody()).p.x + (size.x / scale), b2Body_GetTransform(rb.getBody()).p.y + (size.y / scale) / 2 - capsule->radius };
-	capsule->center1 = { b2Body_GetTransform(rb.getBody()).p.x + (size.x / scale), b2Body_GetTransform(rb.getBody()).p.y - (size.y/scale)/2 + capsule->radius };
-	shapeId = b2CreateCapsuleShape(rb.getBody(), &shape, capsule);*/
 }
 
 void CapsuleCollider::Update(float dt) {}

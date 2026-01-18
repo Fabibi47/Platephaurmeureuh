@@ -7,7 +7,7 @@ Collider::Collider(Entity* parent) : AComponent(parent), shape(b2DefaultShapeDef
 }
 
 bool Collider::isColliding() {
-	return colliding;
+	return collisionCount > 0;
 }
 
 void Collider::Update(float dt) {
@@ -20,6 +20,14 @@ void Collider::setDensity(float newDensity) {
 
 void Collider::setFriction(float newFriction) {
 	b2Shape_SetFriction(shapeId, newFriction);
+}
+
+void Collider::increaseCollisionCount() {
+	collisionCount++;
+}
+
+void Collider::decreaseCollisionCount() {
+	collisionCount--;
 }
 
 b2ShapeId Collider::getShape() {

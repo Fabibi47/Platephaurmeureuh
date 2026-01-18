@@ -49,9 +49,11 @@ void Physics::Update(std::vector<Entity*> entities) {
 
         if (colliderA && colliderB) {
             if (ICollisionEvent* a = colliderA->parent->GetComponent<ICollisionEvent>()) {
+                colliderA->increaseCollisionCount();
                 a->BeginCollision(colliderA, colliderB);
             }
             if (ICollisionEvent* a = colliderB->parent->GetComponent<ICollisionEvent>()) {
+                colliderB->increaseCollisionCount();
                 a->BeginCollision(colliderB, colliderA);
             }
         }
@@ -74,9 +76,11 @@ void Physics::Update(std::vector<Entity*> entities) {
         }
         if (colliderA && colliderB) {
             if (ICollisionEvent* a = colliderA->parent->GetComponent<ICollisionEvent>()) {
+                colliderA->decreaseCollisionCount();
                 a->EndCollision(colliderA, colliderB);
             }
             if (ICollisionEvent* a = colliderB->parent->GetComponent<ICollisionEvent>()) {
+                colliderB->decreaseCollisionCount();
                 a->EndCollision(colliderB, colliderA);
             }
         }

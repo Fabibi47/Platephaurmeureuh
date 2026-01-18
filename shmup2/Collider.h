@@ -5,7 +5,7 @@
 class Collider : public AComponent
 {
 protected:
-	bool colliding = false;
+	int collisionCount = 0;
 	b2ShapeDef shape;
 	b2ShapeId shapeId;
 public:
@@ -14,6 +14,8 @@ public:
 	bool isColliding();
 	void setDensity(float newDensity);
 	void setFriction(float newFriction);
+	void increaseCollisionCount();
+	void decreaseCollisionCount();
 	b2ShapeId getShape();
 	friend class Physics;
 };
