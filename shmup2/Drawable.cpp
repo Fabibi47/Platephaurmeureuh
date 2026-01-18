@@ -2,7 +2,6 @@
 #include "Drawable.h"
 #include "Transformable.h"
 #include "Entity.h"
-#include "Text.h"
 
 Drawable::Drawable(Entity* parent, sf::Texture& texture, sf::Vector2i spritePos, bool repeat) : AComponent(parent), sprite(texture) {
 	texture.setRepeated(repeat);

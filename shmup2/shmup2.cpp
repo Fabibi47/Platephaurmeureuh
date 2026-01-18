@@ -15,7 +15,6 @@
 #include "Physics.h"
 #include "RigidBody.h"
 #include "BoxCollider.h"
-#include "Text.h"
 #include "CapsuleCollider.h"
 #include "PlayerBehavior.h"
 #include "Camera.h"
@@ -23,6 +22,7 @@
 #include "SwitcherBehavior.h"
 #include "Jump.h"
 #include "Crouch.h"
+#include "EndScene.h"
 
 int main()
 {
@@ -35,11 +35,10 @@ int main()
     Scene* level1 = new Scene(&engine);
     Scene* level2 = new Scene(&engine);
     Scene* loseMenu = new Scene(&engine);
-    Scene* endMenu = new Scene(&engine);
+    Scene* endMenu = new EndScene(&engine);
+    engine.AddScene(mainMenu);
     engine.AddScene(level1);
     engine.AddScene(level2);
-    engine.AddScene(mainMenu);
-    engine.AddScene(loseMenu);
     engine.AddScene(endMenu);
 
 
@@ -114,7 +113,7 @@ int main()
     switcher->AddComponent(new Drawable(switcher, *resources->LoadTexture("flag_blue_a.png"), {0, 0}));
     switcher->AddComponent(new RigidBody(switcher, false));
     switcher->AddComponent(new BoxCollider(switcher, {128, 128}));
-    switcher->AddComponent(new SwitcherBehavior(switcher));
+    switcher->AddComponent(new SwitcherBehavior(switcher, 2));
 
     level1->AddEntityToAdd(switcher);
     level1->AddEntities();
@@ -139,11 +138,27 @@ int main()
 
 
     Entity* ground3 = new Entity(level2);
-    ground3->AddComponent(new Transformable(ground3, { 700, 500 }, { 1600, 128 }));
+    ground3->AddComponent(new Transformable(ground3, { 450, 500 }, { 900, 128 }));
     ground3->AddComponent(new Drawable(ground3, *resources->LoadTexture("terrain_grass_block_top.png"), { 0, 0 }, true));
     ground3->AddComponent(new RigidBody(ground3, false));
-    ground3->AddComponent(new BoxCollider(ground3, { 1600, 128 }));
+    ground3->AddComponent(new BoxCollider(ground3, { 900, 128 }));
     level2->AddEntityToAdd(ground3);
+    level2->AddEntities();
+
+    Entity* ground4 = new Entity(level2);
+    ground4->AddComponent(new Transformable(ground4, { 1200, 800 }, { 900, 128 }));
+    ground4->AddComponent(new Drawable(ground4, *resources->LoadTexture("terrain_grass_block_top.png"), { 0, 0 }, true));
+    ground4->AddComponent(new RigidBody(ground4, false));
+    ground4->AddComponent(new BoxCollider(ground4, { 900, 128 }));
+    level2->AddEntityToAdd(ground4);
+    level2->AddEntities();
+
+    Entity* ground5 = new Entity(level2);
+    ground5->AddComponent(new Transformable(ground5, { 450, 1100 }, { 900, 128 }));
+    ground5->AddComponent(new Drawable(ground5, *resources->LoadTexture("terrain_grass_block_top.png"), { 0, 0 }, true));
+    ground5->AddComponent(new RigidBody(ground5, false));
+    ground5->AddComponent(new BoxCollider(ground5, { 900, 128 }));
+    level2->AddEntityToAdd(ground5);
     level2->AddEntities();
 
     Entity* lWall2 = new Entity(level2);
@@ -160,6 +175,15 @@ int main()
     platform2->AddComponent(new RigidBody(platform2, false));
     platform2->AddComponent(new BoxCollider(platform2, { 200, 128 }));
     level2->AddEntityToAdd(platform2);
+    level2->AddEntities();
+
+    Entity* switcher2 = new Entity(level2);
+    switcher2->AddComponent(new Transformable(switcher2, { 300, 1000 }, { 128, 128 }));
+    switcher2->AddComponent(new Drawable(switcher2, *resources->LoadTexture("flag_blue_a.png"), { 0, 0 }));
+    switcher2->AddComponent(new RigidBody(switcher2, false));
+    switcher2->AddComponent(new BoxCollider(switcher2, { 128, 128 }));
+    switcher2->AddComponent(new SwitcherBehavior(switcher2, 3));
+    level2->AddEntityToAdd(switcher2);
     level2->AddEntities();
 
     level2->setPhysicsActive(false);

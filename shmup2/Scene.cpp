@@ -7,7 +7,6 @@
 #include <iostream>
 #include "Engine.h"
 #include "ResourceManager.h"
-#include "Text.h"
 #include "Camera.h"
 #include "RigidBody.h"
 
@@ -19,9 +18,6 @@ void Scene::Update(float dt) {
 			entity->Update(dt);
 			if (Drawable* draw = entity->GetComponent<Drawable>()) {
 				entity->Draw(*engine->getWindow());
-			}
-			if (Text* text = entity->GetComponent<Text>()) {
-				text->Draw(*engine->getWindow());
 			}
 			if (activeCamera) {
 				engine->getWindow()->setView(*activeCamera->getView());

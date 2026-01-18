@@ -1,11 +1,10 @@
 #pragma once
 #include <iostream>
-#include "MenuScene.h"
-#include "Engine.h"
 #include "EndScene.h"
+#include "Engine.h"
 
-MenuScene::MenuScene(Engine* engine) : Scene(engine), titleText(font), playText(font), quitText(font) {
-	titleText.setString("Platephaurmeureuh");
+EndScene::EndScene(Engine* engine) : Scene(engine), titleText(font), returnText(font), quitText(font) {
+	titleText.setString("You Win !");
 	titleText.setCharacterSize(50);
 	titleText.setFillColor(sf::Color::Yellow);
 	sf::FloatRect titleBounds = titleText.getLocalBounds();
@@ -15,12 +14,12 @@ MenuScene::MenuScene(Engine* engine) : Scene(engine), titleText(font), playText(
 	titleText.setPosition({ windowSizef.x / 2, 200 });
 
 
-	playText.setString("Play");
-	playText.setCharacterSize(30);
-	playText.setFillColor(sf::Color::Yellow);
-	sf::FloatRect playBounds = playText.getLocalBounds();
-	playText.setOrigin({ playBounds.size.x / 2, playBounds.size.y / 2 });
-	playText.setPosition({ windowSizef.x / 2, 400 });
+	returnText.setString("Return to Menu");
+	returnText.setCharacterSize(30);
+	returnText.setFillColor(sf::Color::Yellow);
+	sf::FloatRect returnBounds = returnText.getLocalBounds();
+	returnText.setOrigin({ returnBounds.size.x / 2, returnBounds.size.y / 2 });
+	returnText.setPosition({ windowSizef.x / 2, 400 });
 
 
 	quitText.setString("Quit");
@@ -31,17 +30,17 @@ MenuScene::MenuScene(Engine* engine) : Scene(engine), titleText(font), playText(
 	quitText.setPosition({ windowSizef.x / 2, 500 });
 }
 
-void MenuScene::Update(float dt) {
+void EndScene::Update(float dt) {
 	sf::Vector2i mousePos = sf::Mouse::getPosition(*engine->getWindow());
 	sf::Vector2f mousePosf = { static_cast<float>(mousePos.x), static_cast<float>(mousePos.y) };
-	if (playText.getGlobalBounds().contains(mousePosf)) {
-		playText.setFillColor(sf::Color::Red);
+	if (returnText.getGlobalBounds().contains(mousePosf)) {
+		returnText.setFillColor(sf::Color::Red);
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
 			setSwitch(true, 1);
 		}
 	}
 	else {
-		playText.setFillColor(sf::Color::Yellow);
+		returnText.setFillColor(sf::Color::Yellow);
 	}
 	if (quitText.getGlobalBounds().contains(mousePosf)) {
 		quitText.setFillColor(sf::Color::Red);
@@ -56,9 +55,9 @@ void MenuScene::Update(float dt) {
 }
 
 
-void MenuScene::Draw() {
+void EndScene::Draw() {
 	engine->getWindow()->setView(engine->getWindow()->getDefaultView());
 	engine->getWindow()->draw(titleText);
-	engine->getWindow()->draw(playText);
+	engine->getWindow()->draw(returnText);
 	engine->getWindow()->draw(quitText);
 }

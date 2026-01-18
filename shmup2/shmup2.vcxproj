@@ -131,6 +131,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Crouch.cpp" />
     <ClCompile Include="Drawable.cpp" />
+    <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="ICollisionEvent.cpp" />
@@ -145,7 +146,6 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="shmup2.cpp" />
     <ClCompile Include="SwitcherBehavior.cpp" />
-    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Transformable.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +156,7 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Crouch.h" />
     <ClInclude Include="Drawable.h" />
+    <ClInclude Include="EndScene.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="ICollisionEvent.h" />
@@ -170,7 +171,6 @@
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SwitcherBehavior.h" />
-    <ClInclude Include="Text.h" />
     <ClInclude Include="Transformable.h" />
   </ItemGroup>
   <ItemGroup>

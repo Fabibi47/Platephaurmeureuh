@@ -4,8 +4,9 @@
 
 class SwitcherBehavior : public AComponent, public ICollisionEvent
 {
+	int sceneIndex;
 public:
-	SwitcherBehavior(Entity* parent);
+	SwitcherBehavior(Entity* parent, int sceneIndex);
 	void Update(float dt) override {}
 	void BeginCollision(Collider* me, Collider* other);
 	void EndCollision(Collider* me, Collider* other) {}
