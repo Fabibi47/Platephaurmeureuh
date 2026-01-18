@@ -22,6 +22,7 @@
 #include "MenuScene.h"
 #include "SwitcherBehavior.h"
 #include "Jump.h"
+#include "Crouch.h"
 
 int main()
 {
@@ -36,8 +37,8 @@ int main()
     Scene* loseMenu = new Scene(&engine);
     Scene* endMenu = new Scene(&engine);
     engine.AddScene(level1);
-    engine.AddScene(mainMenu);
     engine.AddScene(level2);
+    engine.AddScene(mainMenu);
     engine.AddScene(loseMenu);
     engine.AddScene(endMenu);
 
@@ -96,7 +97,7 @@ int main()
     player->AddComponent(new Transformable(player, { 200, 160 }, {256, 256}));
     player->AddComponent(new Drawable(player, *resources->LoadTexture("spritesheet-characters-double.png"), { 256, 256 }));
     player->AddComponent(new RigidBody(player, true));
-    player->AddComponent(new CapsuleCollider(player, { 256, 256 }));
+    player->AddComponent(new CapsuleCollider(player, { 165, 200 }));
     player->AddComponent(new Movable(player, 100));
     player->AddComponent(new PlayerBehavior(player));
     player->AddComponent(new Jump(player, 7));
@@ -123,12 +124,14 @@ int main()
 
     Entity* player2 = new Entity(level2);
     player2->AddComponent(new Transformable(player2, { 200, 160 }, { 256, 256 }));
-    player2->AddComponent(new Drawable(player2, *resources->LoadTexture("spritesheet-characters-double.png"), { 256*3, 256*2 }));
+    player2->AddComponent(new Drawable(player2, *resources->LoadTexture("character_green_walk_b.png"), { 0, 0 }));
     player2->AddComponent(new RigidBody(player2, true));
-    player2->AddComponent(new CapsuleCollider(player2, { 256, 256 }));
+    player2->AddComponent(new CapsuleCollider(player2, { 165, 200 }));
     player2->AddComponent(new Movable(player2, 100));
     player2->AddComponent(new PlayerBehavior(player2));
     player2->AddComponent(new Camera(player2, windowSizef));
+    sf::Sprite* player2CrouchSprite = new sf::Sprite(*resources->LoadTexture("character_green_duck.png"));
+    player2->AddComponent(new Crouch(player2, player2CrouchSprite, 25));
 
     level2->AddEntityToAdd(player2);
     level2->AddEntities();
@@ -148,7 +151,15 @@ int main()
     lWall2->AddComponent(new Drawable(lWall2, *resources->LoadTexture("terrain_grass_block_center.png"), { 0, 0 }, true));
     lWall2->AddComponent(new RigidBody(lWall2, false));
     lWall2->AddComponent(new BoxCollider(lWall2, { 700, 2000 }));
-    level2->AddEntityToAdd(lWall);
+    level2->AddEntityToAdd(lWall2);
+    level2->AddEntities();
+
+    Entity* platform2 = new Entity(level2);
+    platform2->AddComponent(new Transformable(platform2, { 900, 200 }, { 200, 128 }));
+    platform2->AddComponent(new Drawable(platform2, *resources->LoadTexture("terrain_grass_block_top.png"), { 0, 0 }, true));
+    platform2->AddComponent(new RigidBody(platform2, false));
+    platform2->AddComponent(new BoxCollider(platform2, { 200, 128 }));
+    level2->AddEntityToAdd(platform2);
     level2->AddEntities();
 
     level2->setPhysicsActive(false);

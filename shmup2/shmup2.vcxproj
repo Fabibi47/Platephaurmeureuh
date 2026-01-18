@@ -129,6 +129,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CapsuleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Crouch.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CapsuleCollider.h" />
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="Crouch.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />
