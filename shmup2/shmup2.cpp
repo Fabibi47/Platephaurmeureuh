@@ -143,6 +143,14 @@ int main()
     level2->AddEntityToAdd(ground3);
     level2->AddEntities();
 
+    Entity* lWall2 = new Entity(level2);
+    lWall2->AddComponent(new Transformable(lWall2, { -350, 0 }, { 700, 2000 }));
+    lWall2->AddComponent(new Drawable(lWall2, *resources->LoadTexture("terrain_grass_block_center.png"), { 0, 0 }, true));
+    lWall2->AddComponent(new RigidBody(lWall2, false));
+    lWall2->AddComponent(new BoxCollider(lWall2, { 700, 2000 }));
+    level2->AddEntityToAdd(lWall);
+    level2->AddEntities();
+
     level2->setPhysicsActive(false);
 
     sf::Clock clock;
