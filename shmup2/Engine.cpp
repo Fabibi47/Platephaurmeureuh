@@ -44,9 +44,7 @@ void Engine::AddScene(Scene* scene) {
 void Engine::SwitchScene(int index) {
     if (currentScene >= 0 && currentScene < scenes.size()) scenes[currentScene]->setPhysicsActive(false);
     currentScene = index;
-    if (currentScene >= 0 && currentScene < scenes.size()) {
-        scenes[currentScene]->setPhysicsActive(true);
-    }
+    if (currentScene >= 0 && currentScene < scenes.size()) scenes[currentScene]->setPhysicsActive(true);
 }
 
 Physics* Engine::getPhysics() {

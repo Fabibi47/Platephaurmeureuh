@@ -145,6 +145,8 @@
     <ClCompile Include="Movable.cpp" />
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneLvl1.cpp" />
+    <ClCompile Include="SceneLvl2.cpp" />
     <ClCompile Include="shmup2.cpp" />
     <ClCompile Include="SwitcherBehavior.cpp" />
     <ClCompile Include="Transformable.cpp" />
@@ -172,6 +174,8 @@
     <ClInclude Include="Movable.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneLvl1.h" />
+    <ClInclude Include="SceneLvl2.h" />
     <ClInclude Include="SwitcherBehavior.h" />
     <ClInclude Include="Transformable.h" />
   </ItemGroup>

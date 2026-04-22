@@ -106,7 +106,12 @@ void Scene::setMap(std::vector<Entity*> newMap) {
 
 void Scene::setPhysicsActive(bool isActive){
 	for (Entity* entity : entities) {
+		if (Transformable* t = entity->GetComponent<Transformable>()) 
+		{
+			t->setPosition(t->firstPos);
+		}
 		if (RigidBody* rb = entity->GetComponent<RigidBody>()) {
+			rb->UpdateBodyPosition();
 			b2BodyId bodyId = rb->getBody();
 			if (isActive) {
 				b2Body_Enable(bodyId);
