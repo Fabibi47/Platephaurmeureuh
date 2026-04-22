@@ -11,8 +11,6 @@ Midore is on a planet with stronger gravity. So he can only crouch to find his w
 
 These are the only 2 levels available for now and they will be longer in the future.
 
-Note that the 'Return to Menu' button doesn't work, this will be corrected very soon.
-
 Keys:
 "Q/D" - Left/Right
 "Space" - Jump (only in level one)
