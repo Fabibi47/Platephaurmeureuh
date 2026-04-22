@@ -36,7 +36,7 @@ void EndScene::Update(float dt) {
 	if (returnText.getGlobalBounds().contains(mousePosf)) {
 		returnText.setFillColor(sf::Color::Red);
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
-			setSwitch(true, 1);
+			setSwitch(true, 0);
 		}
 	}
 	else {

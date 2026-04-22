@@ -30,7 +30,7 @@ public:
 	void RemoveEntities();
 	void RemoveEntity(Entity* entity);
 	int ShouldSwitch();
-	void setSwitch(bool, int);
+	void setSwitch(bool, int = 0);
 	std::vector<Entity*> getMap();
 	void setMap(std::vector<Entity*> newMap);
 	void setPhysicsActive(bool isActive);

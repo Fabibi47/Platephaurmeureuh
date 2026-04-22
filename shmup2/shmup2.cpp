@@ -34,19 +34,18 @@ int main()
     Physics physics({0, 9});
 
     Engine engine(&physics);
-    Scene* mainMenu = new MenuScene(&engine);
+    MenuScene* mainMenu = new MenuScene(&engine);
     SceneLvl1* level1 = new SceneLvl1(&engine);
     SceneLvl2* level2 = new SceneLvl2(&engine);
-    Scene* loseMenu = new LoseScene(&engine);
-    Scene* endMenu = new EndScene(&engine);
+    level2->setPhysicsActive(false);
+    LoseScene* loseMenu = new LoseScene(&engine);
+    EndScene* endMenu = new EndScene(&engine);
     engine.AddScene(mainMenu);
     engine.AddScene(level1);
     engine.AddScene(level2);
     engine.AddScene(endMenu);
     engine.AddScene(loseMenu);
     
-    level2->setPhysicsActive(false);
-
     sf::Clock clock;
 
     engine.Update();

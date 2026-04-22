@@ -7,6 +7,7 @@
 class Engine
 {
 	int currentScene = 0;
+	int previousScene = 0;
 	Physics* physics;
 	sf::RenderWindow* window;
 	std::vector<Scene*> scenes;
@@ -18,4 +19,6 @@ public:
 	void AddScene(Scene* scene);
 	void SwitchScene(int index);
 	Physics* getPhysics();
+	int getCurrentScene();
+	int getPreviousScene();
 };

@@ -36,7 +36,7 @@ void LoseScene::Update(float dt) {
 	if (retryText.getGlobalBounds().contains(mousePosf)) {
 		retryText.setFillColor(sf::Color::Red);
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
-			setSwitch(true, 1);
+			setSwitch(true, engine->getPreviousScene());
 		}
 	}
 	else {

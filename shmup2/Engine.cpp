@@ -20,14 +20,14 @@ void Engine::Update() {
         window->clear(sf::Color::Black);
 
         Scene* scene = scenes[currentScene];
-        if (int index = scene->ShouldSwitch()) {
-            SwitchScene(index);
-            scene = scenes[currentScene];
-        }
         physics->Update(scene->getEntities());
         scene->Update(deltaTime);
         scene->RemoveEntities();
         scene->AddEntities();
+        if (int index = scene->ShouldSwitch()) {
+            SwitchScene(index);
+            scene = scenes[currentScene];
+        }
 
         window->display();
     }
@@ -42,11 +42,23 @@ void Engine::AddScene(Scene* scene) {
 }
 
 void Engine::SwitchScene(int index) {
-    if (currentScene >= 0 && currentScene < scenes.size()) scenes[currentScene]->setPhysicsActive(false);
+    if (currentScene >= 0 && currentScene < scenes.size()) {
+        scenes[currentScene]->setPhysicsActive(false);
+        scenes[currentScene]->setSwitch(false);
+    }
+    previousScene = currentScene;
     currentScene = index;
     if (currentScene >= 0 && currentScene < scenes.size()) scenes[currentScene]->setPhysicsActive(true);
 }
 
 Physics* Engine::getPhysics() {
     return physics;
+}
+
+int Engine::getCurrentScene() {
+    return currentScene;
+}
+
+int Engine::getPreviousScene() {
+    return previousScene;
 }
